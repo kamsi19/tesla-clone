@@ -2,41 +2,40 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import { selectCars } from '../features/car/carSlice';
-import { useSelector } from 'react-redux';
 
 function Header() {
     const [burgerstatus, setBurgerStatus] = useState(false);
-    const cars = useSelector(selectCars)
 
     return (
         <Container>
-            <a>
+            <Button>
                 <img src="/images/logo.svg" alt="Tesla Logo" />
-            </a>
+            </Button>
             <Menu>
-                {cars && cars.map((car, index) =>
-                    <a key={index} href='#'>{car}</a>
-                )}
+                <Button>Model S</Button>
+                <Button>Model 3</Button>
+                <Button>Model X</Button>
+                <Button>Model Y</Button>
                 
             </Menu>
             <RightMenu>
-                <a href='#'>Shop</a>
-                <a href='#'>Tesla Account</a>
+                <Button>Shop</Button>
+                <Button>Tesla Account</Button>
                 <CustomMenu onClick={()=>setBurgerStatus(true)}/>
             </RightMenu>
             <BurgerNav show = { burgerstatus }>
                 <CloseWrapper>
                     <CustomClose onClick={()=>setBurgerStatus(false)} />
                 </CloseWrapper>
-                {cars && cars.map((car, index) =>
-                    <li key={index}> <a href='#'>{car}</a></li>
-                )}
-                <li><a href='#'>Existing Inventory</a></li>
-                <li><a href='#'>Used Inventory</a></li>
-                <li><a href='#'>Trade-in</a></li>
-                <li><a href='#'>Cybertruck</a></li>
-                <li><a href='#'>Roadster</a></li>
+                <li><Button>MODEL S</Button></li>
+                <li><Button>MODEL 3</Button></li>
+                <li><Button>MODEL X</Button></li>
+                <li><Button>MODEL Y</Button></li>
+                <li><Button>Existing Inventory</Button></li>
+                <li><Button>Used Inventory</Button></li>
+                <li><Button>Trade-in</Button></li>
+                <li><Button>Cybertruck</Button></li>
+                <li><Button>Roadster</Button></li>
             </BurgerNav>
 
         </Container>            
@@ -58,33 +57,26 @@ const Container = styled.div `
     z-index: 1;
 `
 
-const Menu = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-
-    a {
-        font-weight: 600;
-        text-transform: uppercase;
-        padding: 0 10px;
-        flex-wrap: nowrap;
-    }
+const Button = styled.div `
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 10px;
+    flex-wrap: nowrap;
 
     @media(max-width: 768px) {
         display: none;
     }
 `
+
+const Menu = styled.div `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+`
 const RightMenu = styled.div `
     display: flex;
     align-items: center;
-
-    a {
-        font-weight: 600;
-        text-transform: uppercase;
-        padding: 0 10px;
-        margin-right: 10px;
-    }
 `
 
 const CustomMenu = styled(MenuIcon) `

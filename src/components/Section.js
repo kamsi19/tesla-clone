@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Fade from 'react-reveal/Fade';
+import PropTypes from 'prop-types';
 
 
 
@@ -30,6 +31,15 @@ function Section( {title, description, leftBtnText, rightBtnText, backgroundImg 
             </Buttons>
         </Wrap>
     )
+}
+
+Section.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    leftBtnText: PropTypes.string,
+    rightBtnText: PropTypes.string,
+    backgroundImg: PropTypes.string,
+
 }
 
 export default Section
